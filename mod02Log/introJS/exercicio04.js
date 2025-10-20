@@ -1,0 +1,15 @@
+const resultado = document.getElementById('resultado');
+const frase = 'Ele disse : "JavaScript e incrivel"';
+const nome = "Bernardo Custodio";
+const cidade = "Ouro Preto";
+const mensagem = "Eu sou " + nome + " e moro em " + cidade + ".";
+const mensagem2 = "\n\tJava Script e a linguagem mais legal do mundo! ";
+const templateString = `Ola meu nome e ${nome} e moro em ${cidade}.`;
+console.log(frase);
+console.log(mensagem);
+console.log(mensagem2);
+console.log(templateString);
+console.log(`Numero de caracteres na variavel frase: ${frase.length} carac`);
+console.log(`Variavel nome em maisculo: ${nome.toUpperCase()}`);
+console.log(`Variavel cidade em minusculo: ${cidade.toLowerCase()}`);
+resultado.innerHTML = `${frase}<br> ${mensagem}<br>${mensagem2}<br> ${templateString}`;
