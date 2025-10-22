@@ -9,8 +9,6 @@ while(true){
     if (!isNaN(numero)) array.push(numero);
 }
 
-const array2 = new Array(array.length);
-
-for(let i=0;i<array.length;i++) array2[(array.length - i - 1)] = array[i];
+const array2 = array.reverse();
 
 resultado.innerHTML = `A lista dos  números inteiros na ordem inversa e ${array2}`;

@@ -2,7 +2,6 @@ const resultado = document.getElementById("resultado");
 const array = [];
 let entrada;
 const numEspecifico = parseInt(prompt("Digite um numero específico"))
-let cont = 0;
 
 while(true){
     entrada=prompt("Digite um numero inteiro:(Clique em cancelar para parar)");
@@ -11,6 +10,6 @@ while(true){
     if (!isNaN(numero)) array.push(numero);
 }
 
-array.forEach((element) =>{if(element === numEspecifico) cont++ } );
+const cont = array.filter(num=>num == numEspecifico)
 
-resultado.innerHTML =` O numero de  vezes que o numero ${numEspecifico} aparece na lista e ${cont}`;
+resultado.innerHTML =` O numero de  vezes que o numero ${numEspecifico} aparece na lista e ${cont.length}`;
