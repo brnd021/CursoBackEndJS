@@ -15,24 +15,16 @@ const biblioteca = [
         ano:2015
     }
 ]
-const autor1 = document.getElementById("autor 1");
-const titulo1 = document.getElementById("titulo 1");
-const ano1 = document.getElementById("ano 1");
 
-const autor2 = document.getElementById("autor 2");
-const titulo2 = document.getElementById("titulo 2");
-const ano2 = document.getElementById("ano 2");
+function gerarTabela(){
+    for(let i = 0; i <= biblioteca.length; i++){
+    const autor = document.getElementById(`autor ${i}`);
+    const titulo = document.getElementById(`titulo ${i}`);
+    const ano = document.getElementById(`ano ${i}`);
 
-const autor3 = document.getElementById("autor 3");
-const titulo3 = document.getElementById("titulo 3");
-const ano3 = document.getElementById("ano 3");
-
-autor1.textContent = biblioteca[0].autor;
-titulo1.textContent = biblioteca[0].titulo;
-ano1.textContent = biblioteca[0].ano;
-autor2.textContent = biblioteca[1].autor;
-titulo2.textContent = biblioteca[1].titulo;
-ano2.textContent = biblioteca[1].ano;
-autor3.textContent = biblioteca[2].autor;
-titulo3.textContent = biblioteca[2].titulo;
-ano3.textContent = biblioteca[2].ano;
+    autor.textContent = biblioteca[i].autor;
+    titulo.textContent = biblioteca[i].titulo;
+    ano.textContent = biblioteca[i].ano;
+}
+}
+gerarTabela();
