@@ -4,46 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Título da página</title>
+    <title>Biblioteca Virtual</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    
 </head>
 
 <body>
     <section class="container">
-        <h1> Título</h1>
-        <div id="resultado"></div>
+        <h1> Biblioteca</h1>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Ano de lançamento </th>
+                </tr>
+            </thead>
+            <tbody id="tabela"> </tbody>
+        </table>
+        <h2>Adicione um novo livro</h2>
+        <label for="Novo-Autor">Nome do autor</label>
+        <input type="text" id="Novo-Autor"></input>
+        <label for="Novo-Titulo">Titulo do livro </label>
+        <input type="text" id="Novo-Titulo"></input>
+        <label for="Novo-Ano">Ano de lançamento</label>
+        <input type="text" id="Novo-Ano"></input>
+        <button id="botao">Adicionar</button>
     </section>
-    <table class="table table-dark">
-    <thead>
-        <tr>
-        <th scope="col">#</th>
-        <th scope="col">Autor</th>
-        <th scope="col">Titulo</th>
-        <th scope="col">Ano de lancamento</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <th scope="row">1</th>
-        <td id ="autor 0"></td>
-        <td id ="titulo 0"></td>
-        <td id ="ano 0"></td>
-        </tr>
-        <tr>
-        <th scope="row">2</th>
-        <td id ="autor 1"></td>
-        <td id ="titulo 1"></td>
-        <td id ="ano 1"></td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td id ="autor 2"></td>
-        <td id ="titulo 2"></td>
-        <td id ="ano 2"></td>
-        </tr>
-    </tbody>
-</table>
+    
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
