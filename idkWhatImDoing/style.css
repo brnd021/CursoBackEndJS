@@ -1,0 +1,110 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root{
+    --primary-color: #4f6575;
+    --primary-color-dark: #104469;
+}
+* {
+    box-sizing: border-box;
+    outline: 0; /* Remove qualquer contorno que apareça ao redor de elementos, 
+    especialmente quando eles estão em foco (como campos de formulário ou links clicáveis).*/
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color:var(--primary-color);
+    font-family: 'Open sans', sans-serif;
+    font-size: 1.3em;
+    line-height: 1.5em;
+}
+.container{
+    max-width: 640px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    justify-content: space-between;
+    
+}
+
+form input, form label, form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+
+form input{
+    font-size: 18px;
+    height: 50px;
+    padding: 0 20px;
+}
+form input:focus{
+    outline: 1px solid var(--primary-color);
+}
+
+form button{
+    margin-top: 30px;
+    border:none;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+form button:hover{
+    background-color: var(--primary-color-dark);
+}
+
+.error{
+    background-color: crimson;
+    padding: 20px;
+    line-height: 1.5em;
+    color: #fff;
+}
+
+.success{
+    margin-top: 20px;
+    background-color: aqua;
+    padding: 20px;
+    line-height: 1.5em;
+}
+
+.resultado{
+    margin: 30px 0;
+    border-radius: 15px;
+}
+
+.colunas {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px; /* espaçamento abaixo das colunas */
+}
+
+.coluna {
+  width: 45%;
+  padding: 20px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+button{
+    margin-top: 30px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border:none;
+    background-color: var(--primary-color-dark);
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: var(--primary-color);
+}
