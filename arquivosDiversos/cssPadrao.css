@@ -1,0 +1,282 @@
+/* styles.css
+   Tema: moderno, responsivo, acessível
+   Use as variáveis abaixo para alterar cores rapidamente.
+*/
+
+:root{
+  /* cores principais */
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #2563eb;     /* azul principal */
+  --accent-2: #06b6d4;   /* ciano secundário */
+  --success: #16a34a;
+  --danger: #ef4444;
+  --glass: rgba(255,255,255,0.6);
+
+  /* tipografia */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --card-padding: 1.25rem;
+  --shadow: 0 6px 18px rgba(16,24,40,0.08);
+}
+
+/* reset + base */
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+body{
+  margin: 0;
+  font-family: var(--font-sans);
+  background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 60%);
+  color: #0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height: 1.45;
+  padding: 2rem;
+}
+
+/* container central */
+.container{
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+/* responsivo: em telas pequenas vira coluna única */
+@media (max-width: 900px){
+  .container{ grid-template-columns: 1fr; padding: 0 1rem; }
+}
+
+/* cabeçalho do app */
+.header{
+  grid-column: 1 / -1;
+  display:flex;
+  align-items:center;
+  gap: 1rem;
+  margin-bottom: .25rem;
+}
+.app-title{
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin:0;
+}
+.app-sub{
+  color: var(--muted);
+  font-size: .95rem;
+  margin:0;
+}
+
+/* cartão */
+.card{
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(15,23,42,0.04);
+}
+
+/* formulário (lado esquerdo) */
+.form-card{
+  display:flex;
+  flex-direction:column;
+  gap: .75rem;
+}
+.form-row{
+  display:flex;
+  gap:.75rem;
+}
+.form-row .field{
+  flex:1;
+  min-width: 0;
+}
+
+/* rótulos e inputs */
+label{
+  display:block;
+  font-size:.9rem;
+  margin-bottom:.35rem;
+  color:#0f172a;
+  font-weight:600;
+}
+.input, input[type="number"], select{
+  width:100%;
+  padding:.6rem .75rem;
+  border-radius: var(--radius-sm);
+  border:1px solid rgba(15,23,42,0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,250,0.6));
+  font-size: .95rem;
+  outline: none;
+  transition: box-shadow .12s ease, border-color .12s ease, transform .06s ease;
+}
+.input:focus, input[type="number"]:focus, select:focus{
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(37,99,235,0.08);
+  transform: translateY(-1px);
+}
+
+/* radio/checkbox custom */
+.row-inline{
+  display:flex;
+  gap:.5rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.radio {
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  font-weight:600;
+  cursor:pointer;
+  color: #0f172a;
+}
+.radio input{ transform: translateY(1px); }
+
+/* botões */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5rem;
+  padding:.6rem .9rem;
+  border-radius: 10px;
+  border: none;
+  cursor:pointer;
+  font-weight:700;
+  letter-spacing: .01em;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  box-shadow: 0 8px 22px rgba(37,99,235,0.12);
+  transition: transform .08s ease, box-shadow .12s ease, opacity .12s;
+}
+.btn:active{ transform: translateY(1px); }
+.btn.secondary{
+  background: none;
+  border: 1px solid rgba(15,23,42,0.06);
+  color: #0f172a;
+  box-shadow: none;
+}
+
+/* painel de info / ajuda */
+.info{
+  font-size:.95rem;
+  color:var(--muted);
+  padding-top:.25rem;
+}
+
+/* cartão lateral (resultado + tabela) */
+.side{
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+}
+
+/* área de resultado grande */
+.result{
+  padding:1rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, rgba(6,182,212,0.06), rgba(255,255,255,0.4));
+  border:1px solid rgba(6,182,212,0.08);
+  display:flex;
+  flex-direction:column;
+  gap:.45rem;
+}
+.result h3{
+  margin:0;
+  font-size:1.05rem;
+  color:#063b63;
+}
+.result .value{
+  font-weight:800;
+  font-size:1.6rem;
+  color:#052f5f;
+}
+
+/* chips de classificação */
+.chips{
+  display:flex;
+  gap:.5rem;
+  flex-wrap:wrap;
+  margin-top:.5rem;
+}
+.chip{
+  padding:.35rem .6rem;
+  border-radius:999px;
+  font-weight:700;
+  font-size:.82rem;
+  border:1px solid rgba(15,23,42,0.06);
+  background: white;
+}
+.chip.low{ color: #0ea5a4; border-color: rgba(16,185,129,0.12); }
+.chip.normal{ color: #16a34a; border-color: rgba(16,163,127,0.12); }
+.chip.over{ color: #d97706; border-color: rgba(245,158,11,0.12); }
+.chip.obese{ color: var(--danger); border-color: rgba(239,68,68,0.12); }
+
+/* tabela de referência */
+.bmi-table{
+  width:100%;
+  border-collapse: collapse;
+  font-size:.95rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,250,0.6));
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+}
+.bmi-table thead th{
+  text-align:left;
+  padding:.65rem .8rem;
+  background: linear-gradient(90deg, rgba(245,247,255,0.9), rgba(255,255,255,0.85));
+  border-bottom:1px solid rgba(15,23,42,0.04);
+  font-weight:700;
+}
+.bmi-table tbody td{
+  padding:.6rem .8rem;
+  border-bottom:1px solid rgba(15,23,42,0.03);
+}
+.bmi-table tbody tr:last-child td{ border-bottom: none; }
+
+/* alertas e erros */
+.alert{
+  padding:.6rem .75rem;
+  border-radius:8px;
+  font-weight:600;
+  display:flex;
+  gap:.5rem;
+  align-items:center;
+}
+.alert.info{ background: rgba(99,102,241,0.07); color: #312e81; border:1px solid rgba(99,102,241,0.08); }
+.alert.warn{ background: rgba(245,158,11,0.06); color:#92400e; border:1px solid rgba(245,158,11,0.08); }
+.alert.error{ background: rgba(239,68,68,0.06); color:var(--danger); border:1px solid rgba(239,68,68,0.08); }
+
+/* rodapé do cartão (pequenas notas) */
+.card-footer{
+  font-size:.85rem;
+  color:var(--muted);
+  margin-top:.35rem;
+}
+
+/* utilitários rápidos */
+.text-center{ text-align:center; }
+.small{ font-size:.85rem; color:var(--muted); }
+.mb-0{ margin-bottom:0; }
+.mt-0{ margin-top:0; }
+
+/* estilos para impressão (economiza tinta) */
+@media print{
+  body{ background: #fff; padding:0; color:#000; }
+  .container{ box-shadow:none; }
+  .btn, .input{ box-shadow:none; }
+}
+
+/* animação suave na entrada de resultados */
+.fade-in{
+  animation: fadeIn 260ms ease both;
+}
+@keyframes fadeIn{
+  from { opacity:0; transform: translateY(6px); }
+  to { opacity:1; transform: translateY(0); }
+}
