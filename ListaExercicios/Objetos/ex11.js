@@ -1,4 +1,4 @@
-biblioteca = {
+const biblioteca = {
     livros: [
     {
         autor: 'Bill Gates', 
@@ -15,8 +15,8 @@ biblioteca = {
         titulo:  'A Esperança: O Último Livro de Jogos Vorazes',
         ano:2015
     },],
-    adicionarLivro: function(livro){
-        this.livros.push(livro);
+    adicionarLivro: function(autor, titulo, ano){
+        this.livros.push({autor:autor,titulo:titulo,ano:ano});
     },
     buscarPorAutor: function(nomeAutor){
         let livrosDoAutor = this.livros.filter(p=>p.autor === nomeAutor);
@@ -28,4 +28,6 @@ biblioteca = {
     }
 
 }
+biblioteca.buscarPorAutor("Steve Jobs");
+
 
