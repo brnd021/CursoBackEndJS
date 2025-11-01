@@ -1,7 +1,7 @@
 import imcSpecs from './imcSpecs.js'
 
 function calculaIMC(peso,h){
-    return peso / Math.Pow(h,2)
+    return peso / Math.pow(h,2)
 }
 
 function classificaIMC(idade,sexo,peso,h){
