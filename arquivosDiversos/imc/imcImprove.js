@@ -36,6 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const sexo = document.querySelector('input[name="sexo"]:checked').value.toUpperCase();
         let IMC = calculaIMC(peso,altura);
         let classificacao = classificaIMC(idade,sexo,peso,altura);
-        resultado.textContent = `Seu IMC é ${IMC.toFixed(1)} e voce esta com ${classificacao}`
+        resultado.textContent = `Seu IMC é ${IMC.toFixed(2)} e voce esta com ${classificacao}`
     });
 });
