@@ -51,8 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         botao2.addEventListener('click',function(e){
             e.preventDefault();
+            const sexo = document.querySelector('input[name="sexo"]:checked').value?.toUpperCase();
             const formula = calculo.querySelectorAll('input[name="formula"]').value;
             const inputs = tiposDiv.querySelectorAll('input[type="number"]');
+            const idade = parseInt(document.getElementById('idade').value);
             const valorMetodo = m.value.toUpperCase();
             const valoresDobras = {};
             let arrayDobras =[];
@@ -64,28 +66,28 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(valoresDobras);
             switch(valorMetodo){
                 case 'JP3': 
-                    densidadeCorporal = sexo === 'M' ? pollock3M(idade,...arrayDobras) : pollock3F(idade,...arrayDobras);
+                    densidadeCorporal = sexo === 'M' ? formulas.pollock3M(idade,...arrayDobras) : formulas.pollock3F(idade,...arrayDobras);
                     break;
                 case 'JP4':
-                    densidadeCorporal = pollock4(...arrayDobras);
+                    densidadeCorporal = formulas.pollock4(...arrayDobras);
                     break;
                 case 'JP7':
-                    densidadeCorporal = sexo === 'M' ? pollock7M(idade,...arrayDobras) : pollock7F(idade,...arrayDobras);
+                    densidadeCorporal = sexo === 'M' ? formulas.pollock7M(idade,...arrayDobras) : formulas.pollock7F(idade,...arrayDobras);
                     break;
                 case 'DW':
-                    densidadeCorporal = sexo === 'M' ? DurninWomersleyM(idade,...arrayDobras) : DurninWomersleyF(idade,...arrayDobras);
+                    densidadeCorporal = sexo === 'M' ? formulas.DurninWomersleyM(idade,...arrayDobras) : formulas.DurninWomersleyF(idade,...arrayDobras);
                     break;
                 case 'F':
-                    densidadeCorporal = Faulkner(...arrayDobras);
+                    densidadeCorporal = formulas.Faulkner(...arrayDobras);
                     break;
                 case 'S':
-                    densidadeCorporal = sexo === 'M' ? SloanM(idade,...arrayDobras) : SloanF(idade,...arrayDobras);
+                    densidadeCorporal = sexo === 'M' ? formulas.SloanM(idade,...arrayDobras) : formulas.SloanF(idade,...arrayDobras);
                     break;
                 case 'G':
-                    densidadeCorporal = sexo === 'M' ? GuedesM(idade,...arrayDobras) : GGuede(idade,...arrayDobras);
+                    densidadeCorporal = sexo === 'M' ? formulas.GuedesM(idade,...arrayDobras) : formulas.GuedesF(idade,...arrayDobras);
                     break;
             }
-            percentual = formula === 'SIRI' ? Siri(densidadeCorporal) : Brozek(densidadeCorporal);
+            percentual = formula === 'SIRI' ? formulas.Siri(densidadeCorporal) : formulas.Brozek(densidadeCorporal);
             resultado2.textContent = `Seu percentual de gordura : ${percentual}%`;
         })
     });

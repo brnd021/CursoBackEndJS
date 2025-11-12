@@ -1,282 +1,238 @@
-/* styles.css
-   Tema: moderno, responsivo, acessível
-   Use as variáveis abaixo para alterar cores rapidamente.
-*/
+/* ========== Tema moderno aprimorado (v2) ========== */
 
 :root{
-  /* cores principais */
-  --bg: #f6f8fb;
+  /* Cores principais */
+  --bg1: #eef2ff;
+  --bg2: #f8fafc;
   --card: #ffffff;
+  --accent: #2563eb;
+  --accent-2: #06b6d4;
+  --accent-light: #dbeafe;
   --muted: #6b7280;
-  --accent: #2563eb;     /* azul principal */
-  --accent-2: #06b6d4;   /* ciano secundário */
+  --text: #0f172a;
   --success: #16a34a;
   --danger: #ef4444;
-  --glass: rgba(255,255,255,0.6);
-
-  /* tipografia */
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  --radius: 12px;
-  --radius-sm: 8px;
-  --card-padding: 1.25rem;
-  --shadow: 0 6px 18px rgba(16,24,40,0.08);
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(15,23,42,0.08);
+  --transition: all .25s ease;
 }
 
-/* reset + base */
-* { box-sizing: border-box; }
-html,body { height: 100%; }
+/* Reset + base */
+*{ box-sizing: border-box; margin:0; padding:0; }
+html,body{ height:100%; }
 body{
-  margin: 0;
-  font-family: var(--font-sans);
-  background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 60%);
-  color: #0f172a;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(circle at top left, var(--bg1), var(--bg2) 80%);
+  color: var(--text);
   line-height: 1.45;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  scroll-behavior: smooth;
 }
 
-/* container central */
+/* Containers gerais */
 .container{
-  max-width: 980px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 3rem auto;
   display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 1.25rem;
+  grid-template-columns: 1fr 400px;
+  gap: 2rem;
   align-items: start;
+  animation: fadeIn .6s ease both;
 }
 
-/* responsivo: em telas pequenas vira coluna única */
-@media (max-width: 900px){
-  .container{ grid-template-columns: 1fr; padding: 0 1rem; }
+/* Responsivo */
+@media (max-width: 920px){
+  .container{ grid-template-columns: 1fr; gap: 1.25rem; }
 }
 
-/* cabeçalho do app */
+/* Cabeçalho */
 .header{
   grid-column: 1 / -1;
-  display:flex;
-  align-items:center;
-  gap: 1rem;
-  margin-bottom: .25rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
 .app-title{
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent);
   letter-spacing: -0.02em;
-  margin:0;
 }
 .app-sub{
   color: var(--muted);
-  font-size: .95rem;
-  margin:0;
+  font-size: 1rem;
+  margin-top: .25rem;
 }
 
-/* cartão */
+/* ===== Cards ===== */
 .card{
   background: var(--card);
   border-radius: var(--radius);
-  padding: var(--card-padding);
   box-shadow: var(--shadow);
-  border: 1px solid rgba(15,23,42,0.04);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.card::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
+  opacity: 0;
+  transition: var(--transition);
+  z-index: 0;
+}
+.card:hover::before{
+  opacity: 0.05;
+}
+.card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15,23,42,0.12);
 }
 
-/* formulário (lado esquerdo) */
+/* ===== Formulário ===== */
 .form-card{
-  display:flex;
-  flex-direction:column;
-  gap: .75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1;
 }
-.form-row{
-  display:flex;
-  gap:.75rem;
-}
-.form-row .field{
-  flex:1;
-  min-width: 0;
-}
-
-/* rótulos e inputs */
 label{
-  display:block;
-  font-size:.9rem;
-  margin-bottom:.35rem;
-  color:#0f172a;
-  font-weight:600;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: .35rem;
 }
 .input, input[type="number"], select{
-  width:100%;
-  padding:.6rem .75rem;
-  border-radius: var(--radius-sm);
-  border:1px solid rgba(15,23,42,0.08);
-  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,250,0.6));
+  width: 100%;
+  padding: .7rem .85rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(15,23,42,0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,246,255,0.9));
   font-size: .95rem;
-  outline: none;
-  transition: box-shadow .12s ease, border-color .12s ease, transform .06s ease;
+  transition: var(--transition);
 }
 .input:focus, input[type="number"]:focus, select:focus{
   border-color: var(--accent);
-  box-shadow: 0 6px 20px rgba(37,99,235,0.08);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
   transform: translateY(-1px);
 }
 
-/* radio/checkbox custom */
+/* Radios e linhas */
 .row-inline{
   display:flex;
-  gap:.5rem;
   flex-wrap:wrap;
+  gap:.6rem;
   align-items:center;
 }
-.radio {
+.radio{
   display:inline-flex;
   align-items:center;
-  gap:.45rem;
+  gap:.4rem;
   font-weight:600;
   cursor:pointer;
-  color: #0f172a;
 }
 .radio input{ transform: translateY(1px); }
 
-/* botões */
+/* ===== Botões ===== */
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:.5rem;
-  padding:.6rem .9rem;
-  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .7rem 1rem;
+  border-radius: var(--radius);
   border: none;
-  cursor:pointer;
-  font-weight:700;
+  cursor: pointer;
+  font-weight: 700;
   letter-spacing: .01em;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  color: white;
-  box-shadow: 0 8px 22px rgba(37,99,235,0.12);
-  transition: transform .08s ease, box-shadow .12s ease, opacity .12s;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+  transition: var(--transition);
 }
-.btn:active{ transform: translateY(1px); }
+.btn:hover{
+  opacity: 0.92;
+  transform: translateY(-2px);
+}
+.btn:active{
+  transform: translateY(1px);
+}
 .btn.secondary{
-  background: none;
-  border: 1px solid rgba(15,23,42,0.06);
-  color: #0f172a;
+  background: transparent;
+  border: 1px solid rgba(15,23,42,0.12);
+  color: var(--text);
   box-shadow: none;
 }
 
-/* painel de info / ajuda */
-.info{
-  font-size:.95rem;
-  color:var(--muted);
-  padding-top:.25rem;
-}
-
-/* cartão lateral (resultado + tabela) */
-.side{
-  display:flex;
-  flex-direction:column;
-  gap:.75rem;
-}
-
-/* área de resultado grande */
+/* ===== Resultado ===== */
 .result{
-  padding:1rem;
-  border-radius: var(--radius-sm);
-  background: linear-gradient(180deg, rgba(6,182,212,0.06), rgba(255,255,255,0.4));
-  border:1px solid rgba(6,182,212,0.08);
-  display:flex;
-  flex-direction:column;
-  gap:.45rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(6,182,212,0.08), rgba(255,255,255,0.4));
+  border: 1px solid rgba(6,182,212,0.12);
+  text-align: center;
+  font-weight: 600;
+  color: var(--accent);
+  transition: var(--transition);
 }
-.result h3{
-  margin:0;
-  font-size:1.05rem;
-  color:#063b63;
-}
-.result .value{
-  font-weight:800;
-  font-size:1.6rem;
-  color:#052f5f;
+.result:hover{
+  background: linear-gradient(180deg, rgba(6,182,212,0.12), rgba(255,255,255,0.6));
 }
 
-/* chips de classificação */
-.chips{
-  display:flex;
-  gap:.5rem;
-  flex-wrap:wrap;
-  margin-top:.5rem;
+/* ===== Lateral (tabela) ===== */
+.side{
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
-.chip{
-  padding:.35rem .6rem;
-  border-radius:999px;
-  font-weight:700;
-  font-size:.82rem;
-  border:1px solid rgba(15,23,42,0.06);
-  background: white;
-}
-.chip.low{ color: #0ea5a4; border-color: rgba(16,185,129,0.12); }
-.chip.normal{ color: #16a34a; border-color: rgba(16,163,127,0.12); }
-.chip.over{ color: #d97706; border-color: rgba(245,158,11,0.12); }
-.chip.obese{ color: var(--danger); border-color: rgba(239,68,68,0.12); }
 
-/* tabela de referência */
+/* Tabela moderna */
 .bmi-table{
   width:100%;
   border-collapse: collapse;
   font-size:.95rem;
-  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,250,0.6));
-  border-radius:8px;
   overflow:hidden;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.05);
+  background: rgba(255,255,255,0.95);
 }
-.bmi-table thead th{
+.bmi-table th, .bmi-table td{
   text-align:left;
   padding:.65rem .8rem;
-  background: linear-gradient(90deg, rgba(245,247,255,0.9), rgba(255,255,255,0.85));
-  border-bottom:1px solid rgba(15,23,42,0.04);
+  border-bottom:1px solid rgba(15,23,42,0.06);
+}
+.bmi-table thead th{
+  background: linear-gradient(90deg, var(--accent-light), #fff);
   font-weight:700;
+  color:#052f5f;
 }
-.bmi-table tbody td{
-  padding:.6rem .8rem;
-  border-bottom:1px solid rgba(15,23,42,0.03);
+.bmi-table tbody tr:hover{
+  background: rgba(37,99,235,0.05);
 }
-.bmi-table tbody tr:last-child td{ border-bottom: none; }
 
-/* alertas e erros */
+/* ===== Mensagens ===== */
 .alert{
-  padding:.6rem .75rem;
-  border-radius:8px;
+  padding:.7rem .9rem;
+  border-radius: var(--radius);
   font-weight:600;
   display:flex;
   gap:.5rem;
   align-items:center;
 }
-.alert.info{ background: rgba(99,102,241,0.07); color: #312e81; border:1px solid rgba(99,102,241,0.08); }
-.alert.warn{ background: rgba(245,158,11,0.06); color:#92400e; border:1px solid rgba(245,158,11,0.08); }
-.alert.error{ background: rgba(239,68,68,0.06); color:var(--danger); border:1px solid rgba(239,68,68,0.08); }
+.alert.info{ background: rgba(99,102,241,0.08); color:#312e81; }
+.alert.warn{ background: rgba(245,158,11,0.08); color:#92400e; }
+.alert.error{ background: rgba(239,68,68,0.08); color:var(--danger); }
 
-/* rodapé do cartão (pequenas notas) */
-.card-footer{
-  font-size:.85rem;
-  color:var(--muted);
-  margin-top:.35rem;
-}
-
-/* utilitários rápidos */
-.text-center{ text-align:center; }
-.small{ font-size:.85rem; color:var(--muted); }
-.mb-0{ margin-bottom:0; }
-.mt-0{ margin-top:0; }
-
-/* estilos para impressão (economiza tinta) */
-@media print{
-  body{ background: #fff; padding:0; color:#000; }
-  .container{ box-shadow:none; }
-  .btn, .input{ box-shadow:none; }
-}
-
-/* animação suave na entrada de resultados */
+/* ===== Animações ===== */
 .fade-in{
-  animation: fadeIn 260ms ease both;
+  animation: fadeIn .35s ease both;
 }
 @keyframes fadeIn{
-  from { opacity:0; transform: translateY(6px); }
-  to { opacity:1; transform: translateY(0); }
+  from{ opacity:0; transform:translateY(6px); }
+  to{ opacity:1; transform:none; }
 }
