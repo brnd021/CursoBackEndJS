@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     metodo.forEach(m => {
         m.addEventListener('change', function () {
             tiposDiv.innerHTML = '';
-            const sexo = document.querySelector('input[name="sexo"]:checked').value?.toUpperCase();
+            const sexo = document.querySelector('input[name="sexo"]:checked').value.toUpperCase();
             if(!sexo){
                 tiposDiv.innerHTML='<p> Selecione o sexo antes de escolher o metodo. </p>'
                 return;
