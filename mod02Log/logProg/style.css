@@ -27,7 +27,11 @@ body{
     justify-content: space-between;
     
 }
-
+.botoes{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+}
 form input, form label, form button {
     display: block;
     width: 100%;
