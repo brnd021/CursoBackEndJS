@@ -4,17 +4,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const timer = document.getElementById("timer");
     let ativo = true;
     let contador = 0;
-
+    let rodar = true;
     iniciar.addEventListener("click",function(e){
         e.preventDefault;
-        let sensor = setInterval(() => {
+        sensor = setInterval(() => {
             if(ativo) {
                 contador += 2;
                 timer.textContent = `Verificando ambiente... (${contador}s)`
             }
         }, 2000);
 
-        let alerta = setTimeout(() => {
+        alerta = setTimeout(() => {
             if(ativo)timer.textContent = "Alerta!Movimento detectado"
         }, 10000);
     })

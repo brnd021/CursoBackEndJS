@@ -1,13 +1,10 @@
 let i = 10
 const regre = setInterval(()=>{
-    if(i===0){
+    if(i<0){
         clearInterval(regre);
         console.log("Tempo esgotado!")
     }
-    else{
-    console.log(i);
-    i--;
-    }
+    else console.log(i--);
 },1000);
 
 
